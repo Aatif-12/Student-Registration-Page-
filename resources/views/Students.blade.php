@@ -1,3 +1,4 @@
+{{-- Student data will store in the database --}}
 <div class="container mt-5">
     <div class="registration-container">
         <h2 class="registration-header">Student Registration</h2>
@@ -61,6 +62,5 @@
         height: 40px;
         font-size: 15px;
     }
-
 </style>
 
