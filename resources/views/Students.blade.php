@@ -16,10 +16,12 @@
                 <label for="phone">Phone Number</label>
                 <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter phone number" required>
             </div>
-            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+            <button type="submit" class="btn btn-primary btn-block">Add Student</button>
         </form>
     </div>
 </div>
+
+
 
 
 <style>

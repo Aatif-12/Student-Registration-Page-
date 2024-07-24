@@ -31,6 +31,51 @@ class StudentController extends Controller
             'phone' => $req->phone
         ]);
 
-        echo "Student added successfully";
+        // echo "Student added successfully";
+        return redirect('list-student');
+
+
+    }
+    function listStudent()
+    {
+        $students = Student::all();
+        return view('listStudent', ['students' => $students]);
+
+        // echo "Student List";
+
+    }
+
+    function deleteStudent($id)
+    {
+        // $student = Student::find($id);
+        // $student->delete();
+        $isdeleted = Student::destroy($id);
+        return redirect('list-student');
+    }
+
+    function edit($id)
+    {
+        // return view('edit');
+    //    return $isedited = Student::edit($id);
+        $student = Student::find($id);
+        return view('edit', ['data' => $student]);
+        // return view('edit-student', ['student' => $student]);
+    }
+
+    function editStudent(Request $req, $id)
+    {
+        
+        $student = Student::find($id);
+        $student->name = $req->name;
+        $student->email = $req->email;
+        $student->phone = $req->phone;
+        // echo "updated Sucessfully";
+
+        if($student->save()){
+            return redirect('list-student');
+        }else{
+            return "Update Operation Failed";
+        }
+        exit();
     }
 }
