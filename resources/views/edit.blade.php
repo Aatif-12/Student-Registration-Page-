@@ -30,9 +30,7 @@
     }
     .form-group {
         margin-bottom: 1rem;
-        /* display: inline; */
-        /* justify-content: center;
-        align-items: center; */
+
     }
     .form-group label {
         display: block;

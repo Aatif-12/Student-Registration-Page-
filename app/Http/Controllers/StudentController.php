@@ -38,7 +38,8 @@ class StudentController extends Controller
     }
     function listStudent()
     {
-        $students = Student::all();
+        // $students = Student::all();
+        $students = Student::paginate(2);
         return view('listStudent', ['students' => $students]);
 
         // echo "Student List";
@@ -64,7 +65,7 @@ class StudentController extends Controller
 
     function editStudent(Request $req, $id)
     {
-        
+
         $student = Student::find($id);
         $student->name = $req->name;
         $student->email = $req->email;
@@ -76,6 +77,13 @@ class StudentController extends Controller
         }else{
             return "Update Operation Failed";
         }
-        exit();
+    }
+
+    function search(Request $req)
+    {
+        $searchStudent = Student::where('name', 'like', "%$req->search%")->get();
+        return view('listStudent', ['students' => $searchStudent]);
+
+        // return $req -> search;
     }
 }
