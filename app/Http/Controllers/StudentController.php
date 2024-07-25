@@ -39,7 +39,7 @@ class StudentController extends Controller
     function listStudent()
     {
         // $students = Student::all();
-        $students = Student::paginate(2);
+        $students = Student::paginate(4);
         return view('listStudent', ['students' => $students]);
 
         // echo "Student List";
@@ -81,8 +81,8 @@ class StudentController extends Controller
 
     function search(Request $req)
     {
-        $searchStudent = Student::where('name', 'like', "%$req->search%")->get();
-        return view('listStudent', ['students' => $searchStudent]);
+        $students = Student::where('name', 'like', "%$req->search%")->paginate(4);
+        return view('listStudent', ['students' => $students]);
 
         // return $req -> search;
     }
